@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Mark Janssen
+  author: Mark Janssen, Dieter Provoost
   description: New Relic PHP agent
   # Some suggested licenses:
   # - BSD (default)
@@ -13,7 +13,7 @@ galaxy_info:
   min_ansible_version: 1.5
   #
   # Below are all platforms currently available. Just uncomment
-  # the ones that apply to your role. If you don't see your 
+  # the ones that apply to your role. If you don't see your
   # platform on this list, let us know and we'll get it added!
   #
   platforms:
@@ -63,8 +63,8 @@ galaxy_info:
   #  - 9.1
   #  - 9.1
   #  - 9.2
-  #- name: Ubuntu
-  #  versions:
+  - name: Ubuntu
+    versions:
   #  - all
   #  - lucid
   #  - maverick
@@ -74,7 +74,7 @@ galaxy_info:
   #  - quantal
   #  - raring
   #  - saucy
-  #  - trusty
+    - trusty
   #- name: SLES
   #  versions:
   #  - all
@@ -88,13 +88,13 @@ galaxy_info:
   #  versions:
   #  - all
   #  - any
-  - name: Debian
-    versions:
+  #- name: Debian
+  #  versions:
   #  - all
   #  - etch
   #  - lenny
   #  - squeeze
-    - wheezy
+  #  - wheezy
   #
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.

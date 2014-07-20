@@ -18,10 +18,12 @@
 - name: Configure New Relic PHP Agent
   template:
     src: newrelic.ini.j2
-    dest: /etc/php5/conf.d/newrelic.ini
+    dest: /etc/php5/mods-available/20-newrelic.ini
     group: root
     owner: root
     mode: 0640
   notify:
     - Run New Relic Installer
   when: newrelic_loaded_os_family|default(False) != False
+
+
