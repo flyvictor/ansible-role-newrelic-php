@@ -1,10 +1,4 @@
 ---
-- name: Run New Relic Installer
-  shell: NR_INSTALL_SILENT=true newrelic-install install
-  notify:
-  - Restart PHP-FPM
-  - Restart Apache HTTP server
-
 - name: Restart PHP-FPM
   service: name=php5-fpm state=restarted
   ignore_errors: yes

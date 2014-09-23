@@ -1,0 +1,41 @@
+---
+- name: Set newrelic_loaded_os_family
+  set_fact:
+    newrelic_loaded_os_family: "{{ ansible_os_family }}"
+
+- name: Install New Relic PHP Agent
+  apt:
+    pkg: newrelic-php5
+    state: latest
+  register: newrelic_php5_installed
+
+- name: Run New Relic Installer
+  shell: NR_INSTALL_SILENT=true newrelic-install install
+  when: newrelic_php5_installed.changed
+
+- name: Remove default New Relic configuration
+  file:
+    name: /etc/php5/{{ item }}/conf.d/newrelic.ini
+    state: absent
+  with_items:
+    - apache2
+    - cli
+  when: newrelic_php5_installed.changed
+
+- name: Configure Relic PHP Agent
+  template:
+    src: newrelic.ini.j2
+    dest: /etc/php5/mods-available/newrelic.ini
+    group: root
+    owner: root
+    mode: 0640
+  notify:
+    - Restart PHP-FPM
+    - Restart Apache HTTP server
+
+- name: Enable the New Relic extension
+  shell: php5enmod -s ALL newrelic creates=/etc/php5/cli/conf.d/20-newrelic.ini
+  when: newrelic_php5_installed.changed
+  notify:
+    - Restart PHP-FPM
+    - Restart Apache HTTP server

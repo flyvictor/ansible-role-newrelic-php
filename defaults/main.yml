@@ -1,2 +1,7 @@
 ---
-# defaults file for praseodym.newrelic-php
+# License key (required)
+newrelic_license_key: ~
+
+# Application name (required)
+newrelic_appname: "{{ ansible_hostname }} PHP"
+
