@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Mark Janssen, Dieter Provoost, Yosh de Vos
-  description: An Ansible role for configuring New Relic PHP agent
+  description: An Ansible role for configuring New Relic PHP agent on Ubuntu Trusty
   license: MIT
   version: 0.1
   min_ansible_version: 1.4
