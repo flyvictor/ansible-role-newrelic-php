@@ -3,6 +3,6 @@
   service: name=php5-fpm state=restarted
   ignore_errors: yes
 
-- name: Restart Apache HTTP server
-  service: name=apache2 state=restarted
+- name: Reload Nginx
+  service: name=nginx state=reloaded
   ignore_errors: yes

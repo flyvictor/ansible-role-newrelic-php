@@ -18,7 +18,7 @@
     name: /etc/php5/{{ item }}/conf.d/newrelic.ini
     state: absent
   with_items:
-    - apache2
+    - fpm
     - cli
   when: newrelic_php5_installed.changed
 
@@ -31,11 +31,11 @@
     mode: 0640
   notify:
     - Restart PHP-FPM
-    - Restart Apache HTTP server
+    - Reload Nginx
 
 - name: Enable the New Relic extension
   shell: php5enmod -s ALL newrelic creates=/etc/php5/cli/conf.d/20-newrelic.ini
   when: newrelic_php5_installed.changed
   notify:
     - Restart PHP-FPM
-    - Restart Apache HTTP server
+    - Reload Nginx
